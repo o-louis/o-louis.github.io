@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={`${entry.data.title} - Oriane`}
+  description={entry.data.summary}
+>
+  <article class="py-8">
+    <a href="/work" class="link-hover text-sm text-subtle">← All work</a>
+
+    <header class="mt-8 border-b border-line pb-8">
+      <h1 class="max-w-2xl text-3xl font-medium tracking-tight sm:text-4xl">
+        {entry.data.title}
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-muted">
+        {entry.data.summary}
+      </p>
+
+      <dl class="mt-8 grid grid-cols-2 gap-5 font-mono text-xs sm:grid-cols-4">
+        <div>
+          <dt class="text-subtle">Role</dt>
+          <dd class="mt-1">{entry.data.role}</dd>
+        </div>
+        <div>
+          <dt class="text-subtle">Company</dt>
+          <dd class="mt-1">{entry.data.company}</dd>
+        </div>
+        <div>
+          <dt class="text-subtle">Period</dt>
+          <dd class="mt-1">{entry.data.period}</dd>
+        </div>
+        <div>
+          <dt class="text-subtle">Stack</dt>
+          <dd class="mt-1">{entry.data.stack.join(', ')}</dd>
+        </div>
+      </dl>
+
+      {
+        entry.data.impact && entry.data.impact.length > 0 && (
+          <ul class="mt-8 space-y-2 border-l-2 border-accent pl-5 text-sm text-muted">
+            {entry.data.impact.map((line) => (
+              <li>{line}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <div
+      class="prose prose-neutral mt-10 max-w-none
+             prose-p:text-muted prose-li:text-muted prose-strong:text-fg
+             prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-fg
+             prose-h2:mt-10 prose-h2:text-xl
+             prose-a:text-accent prose-a:no-underline hover:prose-a:underline"
+    >
+      <Content />
+    </div>
+  </article>
+</Layout>

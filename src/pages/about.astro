@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About - Oriane"
+  description="About Oriane, senior frontend developer."
+>
+  <section class="py-8">
+    <h1 class="text-3xl font-medium tracking-tight">About</h1>
+
+    <div
+      class="prose prose-neutral mt-10 max-w-none
+             prose-p:text-muted prose-li:text-muted prose-strong:text-fg
+             prose-p:leading-relaxed
+             prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+             prose-h2:font-medium prose-h2:tracking-tight prose-h2:text-lg
+             prose-h2:mt-10 prose-h2:text-fg"
+    >
+      <p>
+        I started in Paris at <strong>Dotscreen</strong>, shipping smart-TV and
+        set-top-box apps for broadcasters like Disney, Arte and beIN Sports.
+        In 2021 I moved to Montréal to join <strong>Hivestack</strong>, a DOOH
+        adtech platform (now Perion DOOH), and spent five years building its
+        campaign planning product from zero.
+      </p>
+
+      <p>
+        Two very different domains, but both taught me to treat frontend as
+        real engineering - architecture, testing, accessibility, docs. The
+        boring things that let a team still ship confidently a year later,
+        instead of tip-toeing around the code.
+      </p>
+
+      <h2>What I care about</h2>
+      <ul>
+        <li><strong>Architecture that maps the domain.</strong> DDD isn't a buzzword - naming things right prevents half the bugs.</li>
+        <li><strong>Accessibility by default</strong>, not a remediation project bolted on six months before launch.</li>
+        <li><strong>Tests that actually catch things</strong> - unit and integration, not coverage theatre.</li>
+        <li><strong>Writing things down.</strong> Good technical docs are a gift to whoever comes after you, including future-you.</li>
+      </ul>
+
+      <h2>Stack I reach for</h2>
+      <p>
+        <strong>Vue and React</strong> with <strong>TypeScript</strong>, both
+        in production for years. I lean Vue when I have the choice - Pinia for
+        state, ECharts and Mapbox when the UI is data- or geo-heavy. Tailwind
+        or styled-components, depending on the design system in place.
+      </p>
+      <p>
+        For the rest of the toolchain: Vite or Webpack for builds, Storybook
+        for the UI sandbox, Jest / Playwright / Cypress for tests, and Sentry
+        + Datadog + CircleCI for what happens after it ships.
+      </p>
+    </div>
+  </section>
+</Layout>

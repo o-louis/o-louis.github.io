@@ -1,0 +1,75 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const { pathname } = Astro.url;
+
+const pages = [
+  { href: '/work', label: 'Work' },
+  { href: '/about', label: 'About' },
+];
+
+const socials = [
+  { href: 'https://github.com/o-louis', icon: 'carbon:logo-github', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/olouis', icon: 'carbon:logo-linkedin', label: 'LinkedIn' },
+  { href: 'mailto:louis.oriane91@gmail.com', icon: 'carbon:email', label: 'Email' },
+];
+---
+
+<header class="flex items-center justify-between py-8">
+  <a
+    href="/"
+    class="group flex items-center gap-3"
+    aria-label="Home"
+  >
+    <span
+      class="flex size-8 items-center justify-center rounded-full  text-sm font-medium text-white transition-transform group-hover:scale-110"
+    >
+      oL
+    </span>
+  </a>
+
+  <nav class="flex items-center gap-1">
+    <ul class="flex items-center gap-5 text-sm">
+      {
+        pages.map(({ href, label }) => {
+          const active = pathname === href || pathname.startsWith(href + '/');
+          return (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  'link-hover transition-colors',
+                  active
+                    ? 'text-fg'
+                    : 'text-muted hover:text-fg',
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <span class="mx-3 h-4 w-px bg-line" aria-hidden></span>
+
+    <ul class="flex items-center gap-3">
+      {
+        socials.map(({ href, icon, label }) => (
+          <li>
+            <a
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              aria-label={label}
+              class="text-subtle hover:text-accent transition-colors"
+            >
+              <Icon name={icon} class="size-[18px]" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

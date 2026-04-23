@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Grayscale tokens - values swap automatically in dark mode below */
+  --color-bg: #ffffff;
+  --color-fg: #000000;        /* headings, links, strong */
+  --color-muted: #555555;     /* body text */
+  --color-subtle: #888888;    /* labels, dates, inactive icons */
+  --color-line: #e5e5e5;
+  --color-accent: #4b8c7f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #050505;
+    --color-fg: #ffffff;
+    --color-muted: #bbbbbb;
+    --color-subtle: #888888;
+    --color-line: #222222;
+    --color-accent: #7bb3a4;
+  }
+}
+
+@layer base {
+  html {
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-weight: 400;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@utility link-hover {
+  @apply relative inline-block;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.3s ease;
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* View Transitions - smooth cross-page morph */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}

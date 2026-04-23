@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import Layout from '../layouts/Layout.astro';
+
+const work = (await getCollection('work')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const selectedWork = work.slice(0, 3);
+
+const elsewhere = [
+  { href: 'mailto:oriane.louis.pro@gmail.com', icon: 'carbon:email', label: 'Email', value: 'oriane.louis.pro@gmail.com' },
+  { href: 'https://github.com/o-louis', icon: 'carbon:logo-github', label: 'GitHub', value: 'github.com/o-louis' },
+  { href: 'https://www.linkedin.com/in/olouis', icon: 'carbon:logo-linkedin', label: 'LinkedIn', value: 'linkedin.com/in/olouis' },
+];
+---
+
+<Layout>
+  <section class="pb-12 pt-6">
+    <div class="flex items-center gap-2">
+      <span class="size-2 rounded-full bg-accent motion-safe:animate-pulse"></span>
+      <span class="font-mono text-xs uppercase tracking-widest text-subtle">
+        Open to senior roles
+      </span>
+    </div>
+
+    <h1 class="mt-6 text-4xl font-medium tracking-tight sm:text-[2.75rem]">
+      Hi, I'm Oriane <span class="inline-block motion-safe:animate-wave"></span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+      A <span class="text-accent">senior frontend developer</span>, 8 years in,
+      split between France and Canada. Mostly Vue and React and always TypeScript 💚.
+    </p>
+
+    <p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+      Based in{' '}
+      <span class="text-fg font-bold">Montréal</span>.
+      Looking for senior roles with teams where craft actually matters and the <span class="text-fg font-bold">UI is part of the product</span>, not a layer on top.
+    </p>
+  </section>
+
+  <hr class="border-line" />
+
+  <section class="py-12">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-sm font-medium uppercase tracking-widest text-subtle">
+        Selected Work
+      </h2>
+      <a href="/work" class="link-hover text-sm text-muted">All →</a>
+    </div>
+
+    <ul class="mt-8 space-y-7">
+      {
+        selectedWork.map((entry) => (
+          <li>
+            <a
+              href={`/work/${entry.id}`}
+              class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+            >
+              <div>
+                <h3 class="font-medium tracking-tight text-fg group-hover:text-accent transition-colors">
+                  {entry.data.title}
+                </h3>
+                <p class="mt-1 text-sm text-muted">{entry.data.summary}</p>
+              </div>
+              <span class="shrink-0 font-mono text-xs text-subtle">
+                {entry.data.period}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <hr class="border-line" />
+
+  <section class="py-12">
+    <h2 class="text-sm font-medium uppercase tracking-widest text-subtle">
+      Get in touch
+    </h2>
+
+    <p class="mt-6 max-w-xl text-muted">
+      Best way to reach me is
+    </p>
+
+    <ul class="mt-6 space-y-3">
+      {
+        elsewhere.map(({ href, icon, label, value }) => (
+          <li>
+            <a
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="group inline-flex items-center gap-3 text-sm"
+            >
+              <Icon name={icon} class="size-4 text-subtle group-hover:text-accent transition-colors" />
+              <span class="font-mono text-xs uppercase tracking-widest text-subtle w-20">
+                {label}
+              </span>
+              <span class="link-hover text-fg group-hover:text-accent transition-colors">
+                {value}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+  }
+  .animate-wave {
+    animation: wave 2.4s ease-in-out 0.5s 1;
+    transform-origin: 70% 70%;
+  }
+</style>
