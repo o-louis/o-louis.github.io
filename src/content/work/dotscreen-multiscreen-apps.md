@@ -32,3 +32,9 @@ zoo: old WebKit engines, underpowered CPUs, remote-control focus management,
 DRM quirks, and a dozen subtly different platforms (Samsung Tizen, LG webOS,
 Android TV, various set-top box OSes). Cross-device compatibility and
 performance were the core engineering constraints on every single project.
+
+![Application TV](/work/dotscreen-1.webp)
+
+![Application TV](/work/dotscreen-2.webp)
+
+![Application TV](/work/dotscreen-3.webp)

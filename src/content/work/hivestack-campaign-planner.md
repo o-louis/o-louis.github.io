@@ -33,3 +33,7 @@ Visualizing it live without choking the browser meant a mix of virtualization,
 server-side aggregation, and deliberate library choices: ECharts for the
 heavy real-time dashboards, Mapbox for the geo targeting and inventory
 visualization on maps.
+
+![Campaign planner](/work/hivestack-1.webp)
+
+![Campaign planner](/work/hivestack-2.webp)
