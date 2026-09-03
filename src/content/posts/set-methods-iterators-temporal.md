@@ -6,12 +6,17 @@ tags: ["javascript"]
 draft: false
 ---
 
-Stage 4 means a feature's specification is finished. Whether it runs in your
-users' browsers is a separate milestone, and the gap between the two can be
-years.
+JavaScript evolves through TC39, the committee that maintains the language.
+A proposal climbs a series of stages, and Stage 4 is the last one: the
+specification text is final and the feature joins the next annual edition.
 
-Here are three recent additions to JavaScript, sorted by that second
-question.
+Reaching Stage 4 takes two independent implementations passing the shared
+test suite. Two — not every engine your users run. That is the gap: a feature
+can be finished on paper and still missing from a browser you support.
+
+The dates below are Baseline dates from MDN, which tracks when something
+works across current browsers. Three recent additions, sorted by whether you
+can use them today.
 
 ## Safe today: set methods
 
