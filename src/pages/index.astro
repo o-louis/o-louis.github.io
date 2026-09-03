@@ -2,11 +2,14 @@
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import Layout from '../layouts/Layout.astro';
+import { getPosts, formatDate, isoDate } from '../lib/posts';
 
 const work = (await getCollection('work')).sort(
   (a, b) => a.data.order - b.data.order
 );
 const selectedWork = work.slice(0, 3);
+
+const latestPosts = (await getPosts()).slice(0, 3);
 
 const elsewhere = [
   { href: 'mailto:oriane.louis.pro@gmail.com', icon: 'carbon:email', label: 'Email', value: 'oriane.louis.pro@gmail.com' },
@@ -73,6 +76,49 @@ const elsewhere = [
       }
     </ul>
   </section>
+
+  {
+    latestPosts.length > 0 && (
+      <Fragment>
+        <hr class="border-line" />
+
+        <section class="py-12">
+          <div class="flex items-baseline justify-between">
+            <h2 class="text-sm font-medium uppercase tracking-widest text-subtle">
+              Writing
+            </h2>
+            <a href="/posts" class="link-hover text-sm text-muted">All →</a>
+          </div>
+
+          <ul class="mt-8 space-y-7">
+            {
+              latestPosts.map((post) => (
+                <li>
+                  <a
+                    href={`/posts/${post.id}`}
+                    class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                  >
+                    <div>
+                      <h3 class="font-medium tracking-tight text-fg group-hover:text-accent transition-colors">
+                        {post.data.title}
+                      </h3>
+                      <p class="mt-1 text-sm text-muted">{post.data.description}</p>
+                    </div>
+                    <time
+                      datetime={isoDate(post.data.pubDate)}
+                      class="shrink-0 font-mono text-xs text-subtle"
+                    >
+                      {formatDate(post.data.pubDate)}
+                    </time>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </Fragment>
+    )
+  }
 
   <hr class="border-line" />
 
