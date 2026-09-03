@@ -64,6 +64,11 @@
   }
 }
 
+/* Inline code inside a link follows the link colour, not the body colour. */
+.prose a code {
+  color: var(--color-accent);
+}
+
 /* Shiki dual themes: the dark palette ships as CSS vars on each token. */
 @media (prefers-color-scheme: dark) {
   .astro-code,
