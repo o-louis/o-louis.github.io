@@ -64,6 +64,15 @@
   }
 }
 
+/* Shiki dual themes: the dark palette ships as CSS vars on each token. */
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
 /* View Transitions - smooth cross-page morph */
 ::view-transition-old(root),
 ::view-transition-new(root) {
