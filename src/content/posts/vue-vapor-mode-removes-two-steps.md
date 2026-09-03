@@ -1,7 +1,7 @@
 ---
 title: "Vue's Vapor Mode removes two steps"
 description: "Vue 3.6 can compile components straight to DOM operations. What the two removed steps were, how to switch it on, and what you give up."
-pubDate: 2026-09-03
+pubDate: 2026-07-20
 tags: ["vue", "performance"]
 draft: false
 ---
