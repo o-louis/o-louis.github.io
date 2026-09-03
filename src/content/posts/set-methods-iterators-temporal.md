@@ -1,20 +1,17 @@
 ---
-title: "New JavaScript features you can actually use"
-description: "Stage 4 means the spec is done, not that you can ship it. Three recent additions sorted by whether they are safe today: set methods, iterator helpers, and Temporal."
+title: "Set methods, iterators, Temporal"
+description: "Three recent JavaScript additions, sorted by whether they run in browsers today rather than by how far along the spec is."
 pubDate: 2026-06-15
 tags: ["javascript"]
 draft: false
 ---
 
-Every "what's new in JavaScript" list has the same problem: it tells you a
-feature reached Stage 4, and leaves you to work out whether you can actually
-put it in production.
+Stage 4 means a feature's specification is finished. Whether it runs in your
+users' browsers is a separate milestone, and the gap between the two can be
+years.
 
-Those are two different questions. Stage 4 means the specification is
-finished. Whether it runs in your users' browsers is a separate matter, and
-the gap between the two can be years.
-
-So here are three recent additions, sorted by that second question.
+Here are three recent additions to JavaScript, sorted by that second
+question.
 
 ## Safe today: set methods
 
